@@ -113,6 +113,7 @@ func TestSuite_FailedConnect(t *testing.T) {
 	compose, err := docker.ComposeSuite("docker-compose-failed-connect.yml", path.Join(pathOutput, "test-suite-failed-connect.log"))
 	require.NoError(t, err)
 	require.NoError(t, compose.Up())
+	requireOBIConfigV2(t, compose, "failedconnectclient")
 
 	driveFailedConnectWorkload(t)
 
